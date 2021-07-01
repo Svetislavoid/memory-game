@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="wrapper">
+        <h1 className="title">
+          Memory game
+        </h1>
+        <select className="players-list" name="players">
+          <option value="" disabled selected>Select player</option>
+          <option value="mile">Mile</option>
+          <option value="cile">Cile</option>
+          <option value="pile">Pile</option>
+          <option value="kile">Kile</option>
+          <option value="new">New...</option>
+        </select>
+        <input className="new-player" type="text" placeholder="Enter player name"></input>
+        <button className="start-button">Start</button>
+      </div>
     </div>
   );
 }
