@@ -1,0 +1,45 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-top: 15rem;
+  font-family: 'Bungee Shade';
+  color: navy;
+}
+
+.players-list {
+  margin-top: 2rem;
+  width:  12rem;
+  padding: 0.5rem;
+  border: 2px solid navy;
+}
+
+.new-player {
+  margin-top: 1rem;
+  width:  12rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: #CC0000;
+  height: 20px;
+}
+
+.start-button {
+  position: fixed;
+  bottom: 5rem;
+  width:  12rem;
+  font-size: 1.5rem;
+  padding: 0.3rem 1.5rem;
+  border: 2px solid navy;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  box-shadow: 0 0 5px navy;
+}
