@@ -1,0 +1,26 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.highscores-list {
+  height: 80vh;
+  width: 80vw;
+  border-radius: 0.5rem;
+  border: 2px solid navy;
+}
+
+.legend {
+  font-size: 1.5rem;
+}
+
+.highscore-item {
+  line-height: 2.2;
+}
+
+.player-score {
+  float: right;
+  margin-right: 1rem;
+}
