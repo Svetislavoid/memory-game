@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { changePage } from '@/utilities/page-router/pageRouterSlice';
 
 // styles
-import './Home.css';
+import '@/pages/Home/Home.css';
 
 // libraries
 import { isEmpty } from 'lodash';
@@ -10,6 +13,8 @@ const Home = () => {
   const [selectedPlayer, setSelectedPlayer] = useState("");
   const [newPlayerName, setNewPlayerName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const dispatch = useDispatch();
 
   const playersList = JSON.parse(localStorage.getItem("playersList")) || [];
 
@@ -38,6 +43,8 @@ const Home = () => {
     }
 
     setErrorMessage("");
+
+    dispatch(changePage("scoreboard"));
   }
 
   useEffect(() => {

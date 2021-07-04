@@ -1,10 +1,10 @@
 import React from 'react';
 
 // styles
-import './Scoreboard.css';
+import '@/pages/Scoreboard/Scoreboard.css';
 
 // functions
-import { secondsToTime } from '../../utilities/functions';
+import { secondsToTime } from '@/utilities/functions';
 
 // libraries
 import { isEmpty } from 'lodash';
