@@ -44,7 +44,7 @@ const Home = () => {
 
     setErrorMessage("");
 
-    dispatch(changePage("scoreboard"));
+    dispatch(changePage("game"));
   }
 
   useEffect(() => {
@@ -52,48 +52,51 @@ const Home = () => {
   }, [selectedPlayer]);
 
   return (
-    <div className="wrapper">
+    <div className="home-wrapper">
       <h1 className="title">
         Memory game
       </h1>
-      <select
-        className="players-list"
-        name="players"
-        defaultValue="placeholder"
-        onMouseDown={
-          (e) => e.target.size = playersList.length < 5 ? playersList.length + 2 : 6
-        }
-        onBlur={(e) => e.target.size = 1}
-        onChange={(e) => {
-          setSelectedPlayer(e.target.value);
-          e.target.size = 1;
-          e.target.blur();
-        }}
-      >
-        <option value="placeholder" disabled>Select player</option>
+      <fieldset className="players-list">
+        <legend className="legend">Select player</legend>
+        <select
+          className="players-select"
+          name="players"
+          defaultValue="placeholder"
+          onMouseDown={
+            (e) => e.target.size = playersList.length < 5 ? playersList.length + 2 : 6
+          }
+          onBlur={(e) => e.target.size = 1}
+          onChange={(e) => {
+            setSelectedPlayer(e.target.value);
+            e.target.size = 1;
+            e.target.blur();
+          }}
+        >
+          <option value="placeholder" disabled>Select player</option>
+          {
+            !isEmpty(playersList) && playersList.map((playerName, index) => {
+              return (
+                <option value="index" key={playerName}>
+                  { playerName }
+                </option>
+              )
+            })
+          }
+          <option value="new">New...</option>
+        </select>
         {
-          !isEmpty(playersList) && playersList.map((playerName, index) => {
-            return (
-              <option value="index" key={playerName}>
-                { playerName }
-              </option>
-            )
-          })
+          selectedPlayer === "new" &&
+          <input
+            className="new-player"
+            type="text"
+            placeholder="Enter player name"
+            value={newPlayerName}
+            onChange={(e) => setNewPlayerName(e.target.value)}
+          />
         }
-        <option value="new">New...</option>
-      </select>
-      {
-        selectedPlayer === "new" &&
-        <input
-          className="new-player"
-          type="text"
-          placeholder="Enter player name"
-          value={newPlayerName}
-          onChange={(e) => setNewPlayerName(e.target.value)}
-        />
-      }
 
-      <p className="error-message">{ errorMessage }</p>
+        <p className="error-message">{ errorMessage }</p>
+      </fieldset>
 
       <button
         className="start-button"

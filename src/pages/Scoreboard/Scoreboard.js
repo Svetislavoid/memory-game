@@ -17,7 +17,7 @@ const Scoreboard = () => {
   });
 
   return (
-    <div className="wrapper">
+    <div className="scoreboard-wrapper">
       <fieldset className="highscores-list">
         <legend className="legend">Highscores</legend>
         <ol>
