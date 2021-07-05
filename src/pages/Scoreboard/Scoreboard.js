@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { changePage } from '@/utilities/page-router/pageRouterSlice';
 
 // styles
 import '@/pages/Scoreboard/Scoreboard.css';
@@ -10,25 +13,34 @@ import { secondsToTime } from '@/utilities/functions';
 import { isEmpty } from 'lodash';
 
 const Scoreboard = () => {
+  const dispatch = useDispatch();
 
   let highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
   highscoresList.sort((a, b) => {
     return a.score - b.score;
   });
 
+  const playAgain = () => {
+    dispatch(changePage("home"));
+  }
+
   return (
-    <div className="scoreboard-wrapper">
-      <fieldset className="highscores-list">
-        <legend className="legend">Highscores</legend>
+    <div className="wrapper">
+      <div className="scoreboard-score">
+        <h1>Your score: 1m 45s</h1>
+        <h4>Congratulations, you made it to the higscores list!</h4>
+      </div>
+      <fieldset className="scoreboard-highscores-list">
+        <legend className="scoreboard-legend">Highscores</legend>
         <ol>
           {
             !isEmpty(highscoresList) && highscoresList.map(({ playerName, score }, index) => {
               return (
-                <li className="highscore-item" key={index}>
-                  <span className="player-name">
+                <li className="scoreboard-highscore-item" key={index}>
+                  <span className="scoreboard-player-name">
                     { playerName }
                   </span>
-                  <span className="player-score">
+                  <span className="scoreboard-player-score">
                     { secondsToTime(score) }
                   </span>
                 </li>
@@ -37,6 +49,12 @@ const Scoreboard = () => {
           }
         </ol>
       </fieldset>
+      <button
+        className="button"
+        onClick={playAgain}
+      >
+        Play again
+      </button>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { changePage } from '@/utilities/page-router/pageRouterSlice';
+import { setPlayer } from '@/utilities/player/playerSlice';
 
 // styles
 import '@/pages/Home/Home.css';
@@ -10,7 +11,7 @@ import '@/pages/Home/Home.css';
 import { isEmpty } from 'lodash';
 
 const Home = () => {
-  const [selectedPlayer, setSelectedPlayer] = useState("");
+  const [selectedPlayer, setSelectedPlayer] = useState(useSelector((state) => state.player.value));
   const [newPlayerName, setNewPlayerName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -40,11 +41,15 @@ const Home = () => {
         playersList ?
         JSON.stringify([...playersList, newPlayerName]) :
         JSON.stringify([newPlayerName]));
+
+      dispatch(setPlayer(newPlayerName));
+    } else if (selectedPlayer !== "new") {
+      dispatch(setPlayer(selectedPlayer));
     }
 
     setErrorMessage("");
 
-    dispatch(changePage("game"));
+    dispatch(changePage("scoreboard"));
   }
 
   useEffect(() => {
@@ -52,16 +57,16 @@ const Home = () => {
   }, [selectedPlayer]);
 
   return (
-    <div className="home-wrapper">
-      <h1 className="title">
+    <div className="wrapper">
+      <h1 className="home-title">
         Memory game
       </h1>
-      <fieldset className="players-list">
-        <legend className="legend">Select player</legend>
+      <fieldset className="home-players-list">
+        <legend className="home-legend">Select player</legend>
         <select
-          className="players-select"
+          className="home-players-select"
           name="players"
-          defaultValue="placeholder"
+          defaultValue={selectedPlayer || "placeholder"}
           onMouseDown={
             (e) => e.target.size = playersList.length < 5 ? playersList.length + 2 : 6
           }
@@ -76,7 +81,7 @@ const Home = () => {
           {
             !isEmpty(playersList) && playersList.map((playerName, index) => {
               return (
-                <option value="index" key={playerName}>
+                <option value={playerName} key={playerName}>
                   { playerName }
                 </option>
               )
@@ -87,7 +92,7 @@ const Home = () => {
         {
           selectedPlayer === "new" &&
           <input
-            className="new-player"
+            className="home-new-player"
             type="text"
             placeholder="Enter player name"
             value={newPlayerName}
@@ -95,11 +100,11 @@ const Home = () => {
           />
         }
 
-        <p className="error-message">{ errorMessage }</p>
+        <p className="home-error-message">{ errorMessage }</p>
       </fieldset>
 
       <button
-        className="start-button"
+        className="button"
         onClick={startTheGame}
       >
         Start

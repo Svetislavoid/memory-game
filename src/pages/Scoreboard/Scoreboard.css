@@ -1,26 +1,22 @@
-.scoreboard-wrapper {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.scoreboard-score {
+  text-align: center;
 }
 
-.highscores-list {
-  height: 80vh;
+.scoreboard-highscores-list {
   width: 80vw;
   border-radius: 0.5rem;
   border: 2px solid navy;
 }
 
-.legend {
+.scoreboard-legend {
   font-size: 1.5rem;
 }
 
-.highscore-item {
-  line-height: 2.2;
+.scoreboard-highscore-item {
+  line-height: 2;
 }
 
-.player-score {
+.scoreboard-player-score {
   float: right;
   margin-right: 1rem;
 }

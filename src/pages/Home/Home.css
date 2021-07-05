@@ -1,25 +1,16 @@
-.home-wrapper {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.title {
+.home-title {
   font-family: 'Bungee Shade';
   color: navy;
-  margin: 5rem 0 0 0;
 }
 
-.players-list {
+.home-players-list {
   border-radius: 0.5rem;
   border: 2px solid navy;
   padding: 1rem;
   max-width: 12rem;
 }
 
-.players-select {
+.home-players-select {
   display: flex;
   flex-direction: column;
   width: 12rem;
@@ -27,28 +18,14 @@
   border: 2px solid navy;
 }
 
-.new-player {
+.home-new-player {
   margin-top: 1rem;
   width:  12rem;
   padding: 0.5rem;
   box-sizing: border-box;
 }
 
-.error-message {
+.home-error-message {
   color: #CC0000;
-  height: 20px;
   text-align: center;
-}
-
-.start-button {
-  width:  12rem;
-  font-size: 1.5rem;
-  padding: 0.3rem 1.5rem;
-  border: 2px solid navy;
-  cursor: pointer;
-  margin: 0 0 2rem 0;
-}
-
-.start-button:hover {
-  box-shadow: 0 0 5px navy;
 }
