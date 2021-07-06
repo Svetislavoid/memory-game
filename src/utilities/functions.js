@@ -51,6 +51,13 @@ export const generateBoardTiles = (boardSize) => {
 
   boardTiles = [...boardTiles, ...boardTiles];
 
+  boardTiles = boardTiles.map((boardTile, index) => {
+    return {
+      id: index,
+      ...boardTile
+    }
+  });
+
   boardTiles = shuffle(boardTiles);
 
   return boardTiles;
