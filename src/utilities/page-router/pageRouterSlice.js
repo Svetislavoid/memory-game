@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const pageRouterSlice = createSlice({
   name: 'pageRouter',
   initialState: {
-    value: 'home',
+    value: 'game',
   },
   reducers: {
     changePage: (state, action) => {

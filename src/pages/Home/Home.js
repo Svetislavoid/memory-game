@@ -49,7 +49,7 @@ const Home = () => {
 
     setErrorMessage("");
 
-    dispatch(changePage("scoreboard"));
+    dispatch(changePage("game"));
   }
 
   useEffect(() => {
