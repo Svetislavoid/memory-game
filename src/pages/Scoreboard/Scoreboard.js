@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { changePage } from '@/utilities/page-router/pageRouterSlice';
 
@@ -13,6 +13,7 @@ import { secondsToTime } from '@/utilities/functions';
 import { isEmpty } from 'lodash';
 
 const Scoreboard = () => {
+  const score = useSelector((state) => state.player.score);
   const dispatch = useDispatch();
 
   let highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
@@ -27,7 +28,7 @@ const Scoreboard = () => {
   return (
     <div className="wrapper">
       <div className="scoreboard-score">
-        <h1>Your score: 1m 45s</h1>
+        <h1>Your score: { secondsToTime(score) }</h1>
         <h4>Congratulations, you made it to the higscores list!</h4>
       </div>
       <fieldset className="scoreboard-highscores-list">

@@ -12,12 +12,53 @@
   max-width: 70vh;
 }
 
+.game-board-tile-wrapper {
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  -webkit-perspective: 800px;
+  -ms-perspective: 800px;
+  perspective: 800px;
+}
+
 .game-board-tile {
   width: 100%;
-  border-radius: 0.5rem;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.game-board-tile-image,
+.game-board-tile-backface {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  font-family: 'Bungee Shade';
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
-.game-board-tile:hover {
-  box-shadow: 0 0 5px navy;
+.game-board-tile-backface {
+  background-color: #DDDDDD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-board-tile-image {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.game-board-tile.game-board-tile-flipped {
+  border-radius: 10px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }

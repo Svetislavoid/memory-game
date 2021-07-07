@@ -4,6 +4,7 @@ export const playerSlice = createSlice({
   name: 'player',
   initialState: {
     value: '',
+    score: 0
   },
   reducers: {
     setPlayer: (state, action) => {
@@ -13,10 +14,13 @@ export const playerSlice = createSlice({
       // immutable state based off those changes
       state.value = action.payload;
     },
+    setScore: (state, action) => {
+      state.score = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setPlayer } = playerSlice.actions;
+export const { setPlayer, setScore } = playerSlice.actions;
 
 export default playerSlice.reducer;
