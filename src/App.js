@@ -10,7 +10,7 @@ import Game from '@/pages/Game/Game';
 import Scoreboard from '@/pages/Scoreboard/Scoreboard';
 
 const App = () => {
-  const page = useSelector((state) => state.pageRouter.value);
+  const page = useSelector((state) => state.pageRouter.page);
 
   return (
     <div className="app">

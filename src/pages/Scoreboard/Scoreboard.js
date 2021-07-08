@@ -14,6 +14,7 @@ import { isEmpty } from 'lodash';
 
 const Scoreboard = () => {
   const score = useSelector((state) => state.player.score);
+  const highscoreListPosition = useSelector((state) => state.player.highscoreListPosition);
   const dispatch = useDispatch();
 
   let highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
@@ -29,16 +30,28 @@ const Scoreboard = () => {
     <div className="wrapper">
       <div className="scoreboard-score">
         <h1>Your score: { secondsToTime(score) }</h1>
-        <h4>Congratulations, you made it to the higscores list!</h4>
+        {
+          highscoreListPosition <= 10 &&
+          <h4>Congratulations, you made it to the highscores list!</h4>
+        }
       </div>
       <fieldset className="scoreboard-highscores-list">
         <legend className="scoreboard-legend">Highscores</legend>
-        <ol>
+        <ol className="scoreboard-highscores">
           {
             !isEmpty(highscoresList) && highscoresList.map(({ playerName, score }, index) => {
+              let scoreClassName = "scoreboard-highscore-item";
+
+              if (highscoreListPosition === index + 1) {
+                scoreClassName += " scoreboard-current-player-score";
+              }
+
               return (
-                <li className="scoreboard-highscore-item" key={index}>
-                  <span className="scoreboard-player-name">
+                <li
+                  className={scoreClassName}
+                  key={index}
+                >
+                  <span>
                     { playerName }
                   </span>
                   <span className="scoreboard-player-score">

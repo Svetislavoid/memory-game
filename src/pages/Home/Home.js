@@ -11,7 +11,7 @@ import '@/pages/Home/Home.css';
 import { isEmpty } from 'lodash';
 
 const Home = () => {
-  const [selectedPlayer, setSelectedPlayer] = useState(useSelector((state) => state.player.value));
+  const [playerName, setPlayerName] = useState(useSelector((state) => state.player.name));
   const [newPlayerName, setNewPlayerName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,31 +20,31 @@ const Home = () => {
   const playersList = JSON.parse(localStorage.getItem("playersList")) || [];
 
   const startTheGame = () => {
-    if (isEmpty(selectedPlayer)) {
+    if (isEmpty(playerName)) {
       setErrorMessage("Please select player");
 
       return;
     }
 
-    if (selectedPlayer === "new" && isEmpty(newPlayerName)) {
+    if (playerName === "new" && isEmpty(newPlayerName)) {
       setErrorMessage("Please enter new player name");
 
       return;
     }
 
-    if (selectedPlayer === "new" && playersList?.includes(newPlayerName)) {
+    if (playerName === "new" && playersList?.includes(newPlayerName)) {
       setErrorMessage(`${newPlayerName} already exists!`);
 
       return;
-    } else if (selectedPlayer === "new") {
+    } else if (playerName === "new") {
       localStorage.setItem("playersList",
         playersList ?
         JSON.stringify([...playersList, newPlayerName]) :
         JSON.stringify([newPlayerName]));
 
       dispatch(setPlayer(newPlayerName));
-    } else if (selectedPlayer !== "new") {
-      dispatch(setPlayer(selectedPlayer));
+    } else if (playerName !== "new") {
+      dispatch(setPlayer(playerName));
     }
 
     setErrorMessage("");
@@ -54,7 +54,7 @@ const Home = () => {
 
   useEffect(() => {
     setErrorMessage("");
-  }, [selectedPlayer]);
+  }, [playerName]);
 
   return (
     <div className="wrapper">
@@ -66,13 +66,13 @@ const Home = () => {
         <select
           className="home-players-select"
           name="players"
-          defaultValue={selectedPlayer || "placeholder"}
+          defaultValue={playerName || "placeholder"}
           onMouseDown={
             (e) => e.target.size = playersList.length < 5 ? playersList.length + 2 : 6
           }
           onBlur={(e) => e.target.size = 1}
           onChange={(e) => {
-            setSelectedPlayer(e.target.value);
+            setPlayerName(e.target.value);
             e.target.size = 1;
             e.target.blur();
           }}
@@ -90,7 +90,7 @@ const Home = () => {
           <option value="new">New...</option>
         </select>
         {
-          selectedPlayer === "new" &&
+          playerName === "new" &&
           <input
             className="home-new-player"
             type="text"

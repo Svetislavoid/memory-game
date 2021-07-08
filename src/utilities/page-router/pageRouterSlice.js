@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const pageRouterSlice = createSlice({
   name: 'pageRouter',
   initialState: {
-    value: 'game',
+    page: 'home',
   },
   reducers: {
     changePage: (state, action) => {
@@ -11,7 +11,7 @@ export const pageRouterSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value = action.payload;
+      state.page = action.payload;
     },
   },
 });
