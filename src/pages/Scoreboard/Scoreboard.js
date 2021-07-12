@@ -18,9 +18,6 @@ const Scoreboard = () => {
   const dispatch = useDispatch();
 
   let highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
-  highscoresList.sort((a, b) => {
-    return a.score - b.score;
-  });
 
   const playAgain = () => {
     dispatch(changePage("home"));
@@ -42,7 +39,7 @@ const Scoreboard = () => {
             !isEmpty(highscoresList) && highscoresList.map(({ playerName, score }, index) => {
               let scoreClassName = "scoreboard-highscore-item";
 
-              if (highscoreListPosition === index + 1) {
+              if (highscoreListPosition === index) {
                 scoreClassName += " scoreboard-current-player-score";
               }
 

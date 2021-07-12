@@ -74,10 +74,13 @@ const Game = () => {
 
   const addToHighscoresList = useCallback((gameTime) => {
     let highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
+    highscoresList.sort((a, b) => {
+      return a.score - b.score;
+    });
 
     const highscoreListPosition = highscoresList.filter(({ score }) => {
       return score < gameTime;
-    }).length + 1;
+    }).length;
 
     if (highscoreListPosition <= 10) {
       highscoresList.splice(highscoreListPosition, 0, { playerName: playerName, score: gameTime });
