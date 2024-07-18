@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/memory-game/static/css/main.d1b2fe16.css",
+    "main.js": "/memory-game/static/js/main.59e3aec0.js",
+    "static/js/453.16738762.chunk.js": "/memory-game/static/js/453.16738762.chunk.js",
+    "static/media/uranus.jpg": "/memory-game/static/media/uranus.5340f189244df29164a3.jpg",
+    "static/media/neptune.jpg": "/memory-game/static/media/neptune.d5e05f73f1e1399fd740.jpg",
+    "static/media/mercury.jpg": "/memory-game/static/media/mercury.b06594cc1515863eb7b9.jpg",
+    "static/media/earth.jpg": "/memory-game/static/media/earth.b932cfca65770d6b672a.jpg",
+    "static/media/jupiter.jpg": "/memory-game/static/media/jupiter.864648f0b84f8a47dbc8.jpg",
+    "static/media/mars.jpg": "/memory-game/static/media/mars.565289849031edf7f770.jpg",
+    "static/media/venus.jpg": "/memory-game/static/media/venus.f1525c648e74e0ff30ac.jpg",
+    "static/media/saturn.jpg": "/memory-game/static/media/saturn.f7b3de7da5748ea6fe57.jpg",
+    "index.html": "/memory-game/index.html",
+    "main.d1b2fe16.css.map": "/memory-game/static/css/main.d1b2fe16.css.map",
+    "main.59e3aec0.js.map": "/memory-game/static/js/main.59e3aec0.js.map",
+    "453.16738762.chunk.js.map": "/memory-game/static/js/453.16738762.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d1b2fe16.css",
+    "static/js/main.59e3aec0.js"
+  ]
+}
