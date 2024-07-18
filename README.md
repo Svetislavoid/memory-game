@@ -2,7 +2,7 @@
 
 Train your memory is a simple memory game developed in React
 
-https://train-your-memory.herokuapp.com/
+https://svetislavoid.github.io/memory-game/
 
 ### Run app
 
